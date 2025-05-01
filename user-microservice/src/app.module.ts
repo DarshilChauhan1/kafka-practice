@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { KafkaAdminModule } from './kafka-admin/kafka-admin.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { RoleModule } from './role/role.module';
+import { JwtAuthModule } from './jwt-auth/jwt-auth.module';
 
 @Module({
   imports: [
@@ -23,7 +24,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       }),
       inject: [ConfigService],
     }),
-    KafkaAdminModule, UserModule],
+    UserModule,
+    RoleModule,
+    JwtAuthModule,
+    ],
   controllers: [AppController],
   providers: [AppService],
 })

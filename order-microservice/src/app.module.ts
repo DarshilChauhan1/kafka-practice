@@ -1,10 +1,10 @@
 import { Module, OnModuleInit } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { NotificationServiceModule } from './notification-service/notification-service.module';
-import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { OrdersModule } from './orders/orders.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -23,8 +23,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       }),
       inject: [ConfigService],
     }),
-    NotificationServiceModule,
-    UserModule,
+    OrdersModule,
+    ProductModule
   ],
   controllers: [AppController],
   providers: [AppService],
